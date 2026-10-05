@@ -1,0 +1,255 @@
+﻿<Window x:Class="LumaDim.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LumaDim">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid x:ConnectionId='2' x:Name="TitleBarDragRegion" Height="46" Padding="20,0,140,0" Background="#01000000">
+            <StackPanel Orientation="Horizontal" Spacing="9" VerticalAlignment="Center">
+                <FontIcon FontSize="15" Glyph="&#xE706;" VerticalAlignment="Center" />
+                <TextBlock VerticalAlignment="Center"
+                           Style="{ThemeResource AppCaptionTextStyle}"
+                           FontWeight="SemiBold"
+                           Text="LumaDim" />
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" Padding="32,6,32,28" VerticalScrollBarVisibility="Auto">
+            <StackPanel Spacing="16">
+                <StackPanel Spacing="4">
+                    <TextBlock Style="{ThemeResource AppTitleTextStyle}" Text="LumaDim" />
+                    <TextBlock Style="{ThemeResource AppBodyTextStyle}"
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                               Text="Dim your display and control it from anywhere" />
+                </StackPanel>
+
+                <TextBlock Style="{ThemeResource SectionHeaderStyle}" Text="Dimming" />
+                <Border Style="{ThemeResource CardStyle}">
+                    <StackPanel>
+                        <Grid Padding="18,16,18,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Style="{ThemeResource AppBodyStrongTextStyle}" Text="Screen brightness" />
+                                <TextBlock x:ConnectionId='18' x:Name="DimStatusText"
+                                           Style="{ThemeResource HintTextStyle}"
+                                           Text="Dimming is off" />
+                            </StackPanel>
+                            <TextBlock x:ConnectionId='17' x:Name="BrightnessValueText"
+                                       Grid.Column="1"
+                                       VerticalAlignment="Center"
+                                       Style="{ThemeResource AppSubtitleTextStyle}"
+                                       FontWeight="SemiBold"
+                                       Text="65%" />
+                        </Grid>
+
+                        <Slider x:ConnectionId='11' x:Name="BrightnessSlider"
+                                Margin="18,6,18,8"
+                                LargeChange="5"
+                                Maximum="100"
+                                Minimum="45"
+                                SmallChange="1"
+                                StepFrequency="1"
+                                Value="65"
+                                                                             />
+
+                        <Grid Padding="18,0,18,16" ColumnSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:ConnectionId='12' x:Name="Preset80Button" Height="32" Tag="80" Content="80%" HorizontalAlignment="Stretch"                      />
+                            <Button x:ConnectionId='13' x:Name="Preset65Button" Grid.Column="1" Height="32" Tag="65" Content="65%" HorizontalAlignment="Stretch"                      />
+                            <Button x:ConnectionId='14' x:Name="Preset55Button" Grid.Column="2" Height="32" Tag="55" Content="55%" HorizontalAlignment="Stretch"                      />
+                            <Button x:ConnectionId='15' x:Name="Preset45Button" Grid.Column="3" Height="32" Tag="45" Content="45%" HorizontalAlignment="Stretch"                      />
+                            <Button x:ConnectionId='16' x:Name="DimOffButton" Grid.Column="4" Height="32" Tag="100" Content="Dim off" HorizontalAlignment="Stretch"                      />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Style="{ThemeResource SectionHeaderStyle}" Text="Keyboard shortcuts" />
+                <Border Style="{ThemeResource CardStyle}">
+                    <StackPanel>
+                        <Grid Padding="18,14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Style="{ThemeResource AppBodyStrongTextStyle}" Text="Global shortcuts" />
+                                <TextBlock Style="{ThemeResource HintTextStyle}"
+                                           Text="Work anywhere, even while LumaDim is in the tray" />
+                            </StackPanel>
+                            <ToggleSwitch x:ConnectionId='10' x:Name="ShortcutsSwitch"
+                                          Grid.Column="1"
+                                          IsOn="True"
+                                          OffContent=""
+                                          OnContent=""
+                                                                            />
+                        </Grid>
+
+                        <Rectangle Style="{ThemeResource DividerStyle}" Margin="18,0" />
+
+                        <Grid Padding="18,11" ColumnSpacing="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Style="{ThemeResource AppBodyStrongTextStyle}" Text="Increase brightness" />
+                                <TextBlock Style="{ThemeResource HintTextStyle}" Text="Also Ctrl + Alt + + (or Numpad +)" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+                                <Border Style="{ThemeResource KeyCapStyle}">
+                                    <TextBlock Style="{ThemeResource KeyCapTextStyle}" Text="Ctrl" />
+                                </Border>
+                                <Border Style="{ThemeResource KeyCapStyle}">
+                                    <TextBlock Style="{ThemeResource KeyCapTextStyle}" Text="Alt" />
+                                </Border>
+                                <Border Style="{ThemeResource KeyCapStyle}">
+                                    <TextBlock Style="{ThemeResource KeyCapTextStyle}" Text="&#x2191;" />
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <Rectangle Style="{ThemeResource DividerStyle}" Margin="18,0" />
+
+                        <Grid Padding="18,11" ColumnSpacing="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Style="{ThemeResource AppBodyStrongTextStyle}" Text="Decrease brightness" />
+                                <TextBlock Style="{ThemeResource HintTextStyle}" Text="Also Ctrl + Alt + - (or Numpad -)" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+                                <Border Style="{ThemeResource KeyCapStyle}">
+                                    <TextBlock Style="{ThemeResource KeyCapTextStyle}" Text="Ctrl" />
+                                </Border>
+                                <Border Style="{ThemeResource KeyCapStyle}">
+                                    <TextBlock Style="{ThemeResource KeyCapTextStyle}" Text="Alt" />
+                                </Border>
+                                <Border Style="{ThemeResource KeyCapStyle}">
+                                    <TextBlock Style="{ThemeResource KeyCapTextStyle}" Text="&#x2193;" />
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <Rectangle Style="{ThemeResource DividerStyle}" Margin="18,0" />
+
+                        <Grid Padding="14,10,18,13">
+                            <Border Style="{ThemeResource StatusChipStyle}" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal" Spacing="7">
+                                    <Ellipse x:ConnectionId='8' x:Name="ShortcutStatusDot"
+                                             Width="7"
+                                             Height="7"
+                                             VerticalAlignment="Center"
+                                             Fill="{StaticResource StatusSuccessBrush}" />
+                                    <TextBlock x:ConnectionId='9' x:Name="ShortcutStatusText"
+                                               VerticalAlignment="Center"
+                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                               Style="{ThemeResource HintTextStyle}"
+                                               Text="All shortcuts active" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Style="{ThemeResource SectionHeaderStyle}" Text="System" />
+                <Border Style="{ThemeResource CardStyle}">
+                    <StackPanel>
+                        <Grid Padding="18,13">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Style="{ThemeResource AppBodyStrongTextStyle}" Text="Start with Windows" />
+                                <TextBlock Style="{ThemeResource HintTextStyle}"
+                                           Text="Launch minimized in the notification area" />
+                            </StackPanel>
+                            <ToggleSwitch x:ConnectionId='7' x:Name="StartupSwitch"
+                                          Grid.Column="1"
+                                          IsOn="False"
+                                          OffContent=""
+                                          OnContent=""
+                                                                          />
+                        </Grid>
+
+                        <Rectangle Style="{ThemeResource DividerStyle}" Margin="18,0" />
+
+                        <Grid Padding="18,13">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Style="{ThemeResource AppBodyStrongTextStyle}" Text="On-screen indicator" />
+                                <TextBlock Style="{ThemeResource HintTextStyle}"
+                                           Text="Show the Windows-style bar when a shortcut is used" />
+                            </StackPanel>
+                            <ToggleSwitch x:ConnectionId='6' x:Name="IndicatorSwitch"
+                                          Grid.Column="1"
+                                          IsOn="True"
+                                          OffContent=""
+                                          OnContent=""
+                                                                            />
+                        </Grid>
+
+                        <Rectangle Style="{ThemeResource DividerStyle}" Margin="18,0" />
+
+                        <Grid Padding="18,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Spacing="2" VerticalAlignment="Center">
+                                <TextBlock Style="{ThemeResource AppBodyStrongTextStyle}" Text="Indicator position" />
+                                <TextBlock Style="{ThemeResource HintTextStyle}"
+                                           Text="Where the brightness bar appears" />
+                            </StackPanel>
+                            <ComboBox x:ConnectionId='5' x:Name="PositionCombo"
+                                      Grid.Column="1"
+                                      MinWidth="150"
+                                      VerticalAlignment="Center"
+                                                                                       >
+                                <ComboBoxItem Content="Bottom center" />
+                                <ComboBoxItem Content="Top left" />
+                                <ComboBoxItem Content="Top center" />
+                            </ComboBox>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <StackPanel Spacing="8" Margin="4,6,4,0">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Ellipse x:ConnectionId='3' x:Name="StatusDot"
+                                 Width="8"
+                                 Height="8"
+                                 VerticalAlignment="Center"
+                                 Fill="{StaticResource StatusSuccessBrush}" />
+                        <TextBlock x:ConnectionId='4' x:Name="StatusText"
+                                   VerticalAlignment="Center"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                   Style="{ThemeResource HintTextStyle}"
+                                   Text="Running in the notification area" />
+                    </StackPanel>
+                    <TextBlock Style="{ThemeResource HintTextStyle}"
+                               Text="Closing this window keeps LumaDim running in the tray. Right-click the tray icon to exit." />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
+
